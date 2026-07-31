@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Home</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-home" style="visibility:hidden">
+
+<div class="nav">
+  <div class="brand"><div class="mark">A</div>AttendQR</div>
+  <div class="nav-links">
+    <span class="active">Home</span>
+    <a href="scan.html">
+    <span>Check-in</span>
+    </a>
+    <a href="records.html">
+    <span>Records</span>
+    </a>
+    
+  </div>
+  <div class="nav-right">
+    <a href="#" id="logout-link" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;">Log out</a>
+    <div class="profile-menu-wrap">
+      <div class="avatar" id="nav-avatar" style="cursor:pointer;">JS</div>
+      <div class="profile-dropdown" id="profile-dropdown">
+        <div class="profile-dropdown-header"><img class="profile-avatar-img" id="profile-avatar-img" alt="Profile picture"></div>
+        <div class="profile-field"><span class="profile-label" id="profile-id-label">Student ID</span><span class="profile-value" id="profile-id">—</span></div>
+        <div class="profile-field"><span class="profile-label">Full name</span><span class="profile-value" id="profile-name">—</span></div>
+        <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profile-email">—</span></div>
+        <div class="profile-status" id="profile-status">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="left">
+    <div>
+      <p class="greeting" id="greeting-text">Good morning, Jordan</p>
+      <p class="greeting-sub" id="greeting-sub">Tuesday, July 8 · Math 101 starts in 15 min</p>
+    </div>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">Today's session</div>
+        <p class="hero-title">Scan to check in</p>
+        <p class="hero-sub">Point your camera at the room code, or use the desktop scanner to check in from this page.</p>
+        <a href="scan.html">
+        <button class="scan-btn">Open scanner</button>
+        </a>
+      </div>
+      <div class="qr-frame">
+        <svg viewBox="0 0 100 100">
+          <rect width="100" height="100" fill="#fff"/>
+          <g fill="#1d4ed8">
+            <rect x="6" y="6" width="26" height="26"/>
+            <rect x="12" y="12" width="14" height="14" fill="#fff"/>
+            <rect x="17" y="17" width="4" height="4" fill="#1d4ed8"/>
+            <rect x="68" y="6" width="26" height="26"/>
+            <rect x="74" y="12" width="14" height="14" fill="#fff"/>
+            <rect x="79" y="17" width="4" height="4" fill="#1d4ed8"/>
+            <rect x="6" y="68" width="26" height="26"/>
+            <rect x="12" y="74" width="14" height="14" fill="#fff"/>
+            <rect x="17" y="79" width="4" height="4" fill="#1d4ed8"/>
+            <rect x="40" y="6" width="6" height="6"/>
+            <rect x="52" y="6" width="6" height="6"/>
+            <rect x="40" y="18" width="6" height="6"/>
+            <rect x="60" y="40" width="6" height="6"/>
+            <rect x="40" y="40" width="6" height="6"/>
+            <rect x="46" y="46" width="6" height="6"/>
+            <rect x="60" y="52" width="6" height="6"/>
+            <rect x="40" y="60" width="6" height="6"/>
+            <rect x="52" y="66" width="6" height="6"/>
+            <rect x="66" y="66" width="6" height="6"/>
+            <rect x="78" y="52" width="6" height="6"/>
+            <rect x="84" y="40" width="6" height="6"/>
+            <rect x="40" y="78" width="6" height="6"/>
+            <rect x="60" y="84" width="6" height="6"/>
+            <rect x="78" y="84" width="6" height="6"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num" id="stat-rate">96%</div><div class="label">Attendance rate</div></div>
+      <div class="stat"><div class="num" id="stat-sessions">18</div><div class="label">Sessions this term</div></div>
+      <div class="stat"><div class="num" id="stat-late">2</div><div class="label">Late arrivals</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Recent check-ins <a href="records.html">See all</a></div>
+      <div id="recent-checkins-list">
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="panel">
+      <div class="panel-title">Today's schedule <a href="#">Full calendar</a></div>
+      <div class="schedule-item">
+        <div class="time-col">9:00 AM</div>
+        <div>
+          <div class="schedule-title">ICT 101</div>
+          <div class="schedule-sub">Room 216 · Prof. Herison</div>
+          <span class="schedule-tag">Starts in 15 min</span>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="time-col">12:00 PM</div>
+        <div>
+          <div class="schedule-title">ICT 110</div>
+          <div class="schedule-sub">Room 118 · Prof. Todsanai</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="time-col">3:00 PM</div>
+        <div>
+          <div class="schedule-title">ICT 202</div>
+          <div class="schedule-sub">Room 302 · Prof. Prashaya</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">This term</div>
+      <div class="mini-stat-row"><span>Sessions attended</span><span class="val" id="mini-attended">18 / 20</span></div>
+      <div class="mini-stat-row"><span>On-time rate</span><span class="val" id="mini-ontime">89%</span></div>
+      <div class="mini-stat-row"><span>Absences</span><span class="val" id="mini-absences">2</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+import { initHomePage } from "./shared.js";
+initHomePage();
+</script>
+
+</body>
+</html>

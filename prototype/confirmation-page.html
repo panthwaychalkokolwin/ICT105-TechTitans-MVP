@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Check-in confirmed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-confirmation">
+
+<div class="nav">
+  <div class="brand"><div class="mark">A</div>AttendQR</div>
+  <div class="nav-links">
+    <a href="home.html"
+    <span>Home</span>
+    </a>
+    <span class="active">Check-in</span>
+    <a href="records.html"
+    <span>Records</span>
+  </a>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <a href="#" id="logout-link" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;">Log out</a>
+    <div class="profile-menu-wrap">
+      <div class="avatar" id="nav-avatar" style="cursor:pointer;">JS</div>
+      <div class="profile-dropdown" id="profile-dropdown">
+        <div class="profile-dropdown-header"><img class="profile-avatar-img" id="profile-avatar-img" alt="Profile picture"></div>
+        <div class="profile-field"><span class="profile-label" id="profile-id-label">Student ID</span><span class="profile-value" id="profile-id">—</span></div>
+        <div class="profile-field"><span class="profile-label">Full name</span><span class="profile-value" id="profile-name">—</span></div>
+        <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profile-email">—</span></div>
+        <div class="profile-status" id="profile-status">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="step-track">
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+  </div>
+
+  <div class="check-circle">✓</div>
+
+  <p class="title">You're checked in</p>
+  <p class="sub">Your attendance has been recorded for this session.</p>
+
+  <div class="detail-card">
+    <div class="detail-row"><span>Session</span><span class="val" id="d-session">—</span></div>
+    <div class="detail-row"><span>Room</span><span class="val" id="d-room">—</span></div>
+    <div class="detail-row"><span>Time</span><span class="val" id="d-time">—</span></div>
+    <div class="detail-row"><span>Status</span><span class="badge" id="d-status">—</span></div>
+  </div>
+
+  <a href="home.html">
+  <button class="primary-btn">Back to home</button>
+  </a>
+  <a href="records.html">
+  <button class="secondary-btn">View attendance history</button>
+  </a>
+
+</div>
+
+<script type="module">
+import { initConfirmationPage } from "./shared.js";
+initConfirmationPage();
+</script>
+
+</body>
+</html>

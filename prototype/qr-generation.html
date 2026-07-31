@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Generate session QR</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-qr" style="visibility:hidden">
+
+<div class="nav">
+  <div class="brand"><div class="mark">A</div>AttendQR</div>
+  <div class="nav-links">
+    <a href="lecturer-dashboard.html">
+    <span>Dashboard</span>
+    </a>
+    <span class="active">Generate QR</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <a href="#" id="logout-link" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;">Log out</a>
+    <div class="profile-menu-wrap">
+      <div class="avatar" id="nav-avatar" style="cursor:pointer;">JA</div>
+      <div class="profile-dropdown" id="profile-dropdown">
+        <div class="profile-dropdown-header"><img class="profile-avatar-img" id="profile-avatar-img" alt="Profile picture"></div>
+        <div class="profile-field"><span class="profile-label" id="profile-id-label">Staff ID</span><span class="profile-value" id="profile-id">—</span></div>
+        <div class="profile-field"><span class="profile-label">Full name</span><span class="profile-value" id="profile-name">—</span></div>
+        <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profile-email">—</span></div>
+        <div class="profile-status" id="profile-status">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="page-title">Generate session QR</p>
+  <p class="page-sub">Create a check-in code for your class. Students within range can scan to mark attendance.</p>
+  <div class="form-error" id="qr-error"></div>
+
+  <div class="panel">
+    <div class="field">
+      <label>Course</label>
+      <select id="course-select">
+        <option value="ICT 101">ICT 101</option>
+        <option value="ICT 102">ICT 102</option>
+        <option value="ICT 103">ICT 103</option>
+         <option value="ICT 110">ICT 110</option>
+          <option value="ICT 113">ICT 113</option>
+           <option value="ICT 202">ICT 202</option>
+            <option value="ICT 209">ICT 209</option>
+             <option value="ICT 210">ICT 210</option>
+              <option value="ICT 211">ICT 211</option>
+               <option value="ICT 212">ICT 212</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Room</label>
+        <input type="text" id="room-input" value="3-216" placeholder="e.g. 3-216">
+      </div>
+      <div class="field">
+        <label>Session length</label>
+        <select id="length-select"><option value="30">30 minutes</option><option value="50">50 minutes</option><option value="90">90 minutes</option></select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Check-in radius</label>
+      <select id="radius-select"><option value="25">25 m</option><option value="50" selected>50 m</option><option value="100">100 m</option></select>
+    </div>
+    <div class="radius-note">Students must be within the selected radius of the room to check in successfully.</div>
+    <button class="generate-btn" id="generate-btn">Generate QR code</button>
+  </div>
+
+  <div class="panel qr-panel">
+    <div class="timer-pill" id="timer-pill"><span class="timer-dot"></span>No active session</div>
+    <div class="qr-frame" id="qr-frame">
+      <span style="color:var(--muted);font-size:12px;">Generate a QR to display it here</span>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:16px;" id="session-code-display"></div>
+    <div class="qr-meta">
+      <div class="meta-row"><span>Course</span><span class="val" id="qr-course">—</span></div>
+      <div class="meta-row"><span>Room</span><span class="val" id="qr-room">—</span></div>
+      <div class="meta-row"><span>Checked in</span><span class="val" id="checkin-count">0</span></div>
+      <div class="meta-row"><span>GPS anchor</span><span class="val" id="qr-gps" style="font-weight:600;">—</span></div>
+    </div>
+    <div class="btn-row">
+      <button class="refresh-btn" id="refresh-btn">Refresh code</button>
+      <button class="stop-btn" id="stop-btn">End session</button>
+    </div>
+  </div>
+
+  <div class="panel live-panel">
+    <div class="live-title">Live check-ins <span style="color:var(--muted);font-weight:400;">Updating in real time</span></div>
+    <div id="live-list">
+      <div class="live-row" style="color:var(--muted);">Generate a QR code to start seeing live check-ins.</div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module">
+import { initQrPage } from "./shared.js";
+initQrPage();
+</script>
+
+</body>
+</html>

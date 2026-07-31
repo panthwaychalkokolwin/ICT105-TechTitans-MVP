@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Attendance history</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-records">
+
+    <div class="nav">
+      <div class="brand"><div class="mark">A</div>AttendQR</div>
+      <div class="nav-links">
+        <a href="home.html">
+        <span>Home</span>
+        </a>
+        <a href="scan.html">
+        <span>Check-in</span>
+        </a>
+        <span class="active">Records</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="#" id="logout-link" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;">Log out</a>
+        <div class="profile-menu-wrap">
+          <div class="avatar" id="nav-avatar" style="cursor:pointer;">JS</div>
+          <div class="profile-dropdown" id="profile-dropdown">
+            <div class="profile-dropdown-header"><img class="profile-avatar-img" id="profile-avatar-img" alt="Profile picture"></div>
+            <div class="profile-field"><span class="profile-label" id="profile-id-label">Student ID</span><span class="profile-value" id="profile-id">—</span></div>
+            <div class="profile-field"><span class="profile-label">Full name</span><span class="profile-value" id="profile-name">—</span></div>
+            <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profile-email">—</span></div>
+            <div class="profile-status" id="profile-status">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <p class="page-title">Attendance history</p>
+      <p class="page-sub">All your recorded check-ins this term.</p>
+
+      <div class="stats">
+        <div class="stat"><div class="num" id="stat-total">0</div><div class="label">Total sessions</div></div>
+        <div class="stat"><div class="num" id="stat-ontime">0</div><div class="label">On time</div></div>
+        <div class="stat"><div class="num" id="stat-late">0</div><div class="label">Late</div></div>
+        <div class="stat"><div class="num" id="stat-absent">0</div><div class="label">Absent</div></div>
+      </div>
+
+      <div class="toolbar">
+        <input type="text" id="search-input" placeholder="Search by session or date">
+        <select id="course-filter"><option value="">All courses</option>
+          <option value="ICT 101">ICT 101</option>
+         <option value="ICT 102">ICT 102</option>
+           <option value="ICT 103">ICT 103</option>
+          <option value="ICT 110">ICT 110</option>
+            <option value="ICT 113">ICT 113</option>
+           <option value="ICT 202">ICT 202</option>
+            <option value="ICT 209">ICT 209</option>
+             <option value="ICT 210">ICT 210</option>
+              <option value="ICT 211">ICT 211</option>
+               <option value="ICT 212">ICT 212</option>
+        </select>
+        <select id="status-filter"><option value="">All statuses</option><option>On time</option><option>Late</option><option>Absent</option></select>
+        <select id="semester-filter"><option value="">All semesters</option><option value="Semester 1">Semester 1</option><option value="Semester 2">Semester 2</option><option value="Summer">Summer</option></select>
+      </div>
+
+      <div class="panel">
+        <table id="records-table">
+          <tr id="header-row">
+            <th>Session</th><th>Date</th><th>Time</th><th>Location</th><th>Status</th>
+          </tr>
+        </table>
+        <p id="no-results" style="display:none;text-align:center;font-size:13px;color:var(--muted);padding:24px;">No records match your search.</p>
+      </div>
+
+      <div class="pagination">
+        <span>Showing 1–5 of 18</span>
+        <div class="page-btns">
+          <div class="page-btn active">1</div>
+          <div class="page-btn">2</div>
+          <div class="page-btn">3</div>
+          <div class="page-btn">›</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="record-modal-backdrop" id="record-modal-backdrop">
+      <div class="record-modal">
+        <button class="record-modal-close" id="record-modal-close" aria-label="Close">&times;</button>
+        <p class="record-modal-title" id="rm-course">—</p>
+        <div class="detail-row"><span>Date</span><span class="val" id="rm-date">—</span></div>
+        <div class="detail-row"><span>Time</span><span class="val" id="rm-time">—</span></div>
+        <div class="detail-row"><span>Location</span><span class="val" id="rm-location">—</span></div>
+        <div class="detail-row"><span>Distance from room</span><span class="val" id="rm-distance">—</span></div>
+        <div class="detail-row"><span>Status</span><span class="badge" id="rm-status">—</span></div>
+      </div>
+    </div>
+
+<script type="module">
+import { initRecordsPage } from "./shared.js";
+initRecordsPage();
+</script>
+
+</body>
+</html>

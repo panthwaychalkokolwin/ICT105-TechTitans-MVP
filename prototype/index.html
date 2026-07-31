@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Log in</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-index">
+
+<div class="brand-panel">
+  <div class="brand"><div class="mark">A</div>AttendQR</div>
+
+  <div class="brand-copy">
+    <div class="brand-eyebrow">Attendance, simplified</div>
+    <p class="brand-title">Check in in seconds with a QR code.</p>
+    <p class="brand-sub">Track sessions, view your attendance history, and never fill out a paper sheet again.</p>
+  </div>
+
+  <div class="qr-frame">
+    <svg viewBox="0 0 100 100">
+      <rect width="100" height="100" fill="#fff"/>
+      <g fill="#1d4ed8">
+        <rect x="6" y="6" width="26" height="26"/>
+        <rect x="12" y="12" width="14" height="14" fill="#fff"/>
+        <rect x="17" y="17" width="4" height="4" fill="#1d4ed8"/>
+        <rect x="68" y="6" width="26" height="26"/>
+        <rect x="74" y="12" width="14" height="14" fill="#fff"/>
+        <rect x="79" y="17" width="4" height="4" fill="#1d4ed8"/>
+        <rect x="6" y="68" width="26" height="26"/>
+        <rect x="12" y="74" width="14" height="14" fill="#fff"/>
+        <rect x="17" y="79" width="4" height="4" fill="#1d4ed8"/>
+        <rect x="40" y="6" width="6" height="6"/>
+        <rect x="52" y="6" width="6" height="6"/>
+        <rect x="40" y="18" width="6" height="6"/>
+        <rect x="60" y="40" width="6" height="6"/>
+        <rect x="40" y="40" width="6" height="6"/>
+        <rect x="46" y="46" width="6" height="6"/>
+        <rect x="60" y="52" width="6" height="6"/>
+        <rect x="40" y="60" width="6" height="6"/>
+        <rect x="52" y="66" width="6" height="6"/>
+        <rect x="66" y="66" width="6" height="6"/>
+        <rect x="78" y="52" width="6" height="6"/>
+        <rect x="84" y="40" width="6" height="6"/>
+        <rect x="40" y="78" width="6" height="6"/>
+        <rect x="60" y="84" width="6" height="6"/>
+        <rect x="78" y="84" width="6" height="6"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="brand-foot">© 2026 AttendQR. All rights reserved.</div>
+</div>
+
+<div class="form-panel">
+  <div class="form-wrap">
+
+    <div class="mode-toggle">
+      <button class="active" id="tab-login" onclick="setMode('login')">Log in</button>
+      <button id="tab-signup" onclick="setMode('signup')">Sign up</button>
+    </div>
+
+    <div id="panel-login">
+      <p class="form-title">Welcome back</p>
+      <p class="form-sub">Log in to check in and view your attendance.</p>
+
+      <div class="form-error" id="login-error"></div>
+
+      <div class="role-toggle">
+        <button class="active" id="login-role-student" onclick="setLoginRole('student')">Student</button>
+        <button id="login-role-lecturer" onclick="setLoginRole('lecturer')">Lecturer</button>
+      </div>
+
+      <div class="field">
+        <label>School email</label>
+        <input type="text" id="login-email" placeholder="jordan@rsu.ac.th">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="••••••••">
+      </div>
+
+      <div class="row-between">
+        <div class="remember">
+          <input type="checkbox" style="width:auto;">
+          Remember me
+        </div>
+        <a href="#" class="forgot">Forgot password?</a>
+      </div>
+
+      <button class="login-btn" id="login-btn">Log in</button>
+
+      <p class="signup">Don't have an account? <a href="#" onclick="setMode('signup');return false;">Sign up</a></p>
+    </div>
+
+    <div id="panel-signup" style="display:none;">
+      <p class="form-title">Create your account</p>
+      <p class="form-sub">Sign up with your school email to get started.</p>
+
+      <div class="form-error" id="signup-error"></div>
+
+      <div class="role-toggle">
+        <button class="active" id="signup-role-student" onclick="setSignupRole('student')">Student</button>
+        <button id="signup-role-lecturer" onclick="setSignupRole('lecturer')">Lecturer</button>
+      </div>
+
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="signup-name" placeholder="Jordan Smith">
+      </div>
+      <div class="field">
+        <label>School email</label>
+        <input type="text" id="signup-email" placeholder="jordan@rsu.ac.th">
+        <div class="hint">Must be a valid @rsu.ac.th address</div>
+      </div>
+      <div class="field">
+        <label id="signup-id-label">Student ID</label>
+        <input type="text" id="signup-id" placeholder="6412345">
+        <div class="hint" id="signup-id-hint">7 digits, e.g. 6412345</div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="signup-password" placeholder="At least 6 characters">
+      </div>
+      <div class="field">
+        <label>Confirm password</label>
+        <input type="password" id="signup-confirm" placeholder="Re-enter password">
+      </div>
+
+      <button class="login-btn" id="signup-btn">Create account</button>
+
+      <p class="signup">Already have an account? <a href="#" onclick="setMode('login');return false;">Log in</a></p>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+import { initLoginPage } from "./shared.js";
+initLoginPage();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Lecturer dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-lecturer" style="visibility:hidden">
+
+<div class="nav">
+  <div class="brand"><div class="mark">A</div>AttendQR</div>
+  <div class="nav-links">
+    <span class="active">Dashboard</span>
+    <a href="QR.html">
+    <span>Generate QR</span>
+    </a>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <a href="#" id="logout-link" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;">Log out</a>
+    <div class="profile-menu-wrap">
+      <div class="avatar" id="nav-avatar" style="cursor:pointer;">JA</div>
+      <div class="profile-dropdown" id="profile-dropdown">
+        <div class="profile-dropdown-header"><img class="profile-avatar-img" id="profile-avatar-img" alt="Profile picture"></div>
+        <div class="profile-field"><span class="profile-label" id="profile-id-label">Staff ID</span><span class="profile-value" id="profile-id">—</span></div>
+        <div class="profile-field"><span class="profile-label">Full name</span><span class="profile-value" id="profile-name">—</span></div>
+        <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profile-email">—</span></div>
+        <div class="profile-status" id="profile-status">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="header-row">
+    <div>
+      <p class="page-title" id="greeting-text">Good morning, Prof. Alvarez</p>
+      <p class="page-sub" id="greeting-sub">Tuesday, July 8 · You have 3 sessions today</p>
+    </div>
+    <a href="QR.html">
+    <button class="new-btn">+ Generate session QR</button>
+    </a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="stat-distinct-students">0</div><div class="label">Students who have checked in</div></div>
+    <div class="stat"><div class="num" id="stat-total-checkins">0</div><div class="label">Total check-ins this term</div></div>
+    <div class="stat"><div class="num" id="stat-sessions-today">0</div><div class="label">Sessions today</div></div>
+    <div class="stat"><div class="num" id="stat-live-count">0</div><div class="label">Live session now</div></div>
+  </div>
+
+  <div class="panel" id="active-session-panel" style="display:none;">
+    <div class="panel-title">Active session <span class="badge live">Live</span></div>
+    <div class="mini-stat-row" style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;">
+      <span>Course</span><span style="font-weight:700;" id="active-course">—</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;">
+      <span>Room</span><span style="font-weight:700;" id="active-room">—</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:9px 0;font-size:13px;">
+      <span>Checked in</span><span style="font-weight:700;" id="active-checkins">0</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="panel">
+        <div class="panel-title">Today's sessions <a href="#">View all</a></div>
+        <table id="todays-sessions-table">
+          <tr id="todays-header-row"><th>Course</th><th>Room</th><th>Time</th><th>Attendance</th><th>Status</th></tr>
+        </table>
+        <p id="todays-empty" style="display:none;text-align:center;font-size:12px;color:var(--muted);padding:14px 0 4px;">No sessions generated today yet.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Check-ins per week <a href="#">This term</a></div>
+        <div class="bar-chart" id="trend-chart"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <div class="panel-title">Alerts</div>
+        <div id="alerts-list">
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Courses</div>
+        <table id="courses-table">
+          <tr><td style="color:var(--muted);">No check-ins recorded yet.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="record-modal-backdrop" id="session-modal-backdrop">
+  <div class="record-modal" style="max-width:420px;">
+    <button class="record-modal-close" id="session-modal-close" aria-label="Close">&times;</button>
+    <p class="record-modal-title" id="sm-title">—</p>
+    <div class="detail-row"><span>Room</span><span class="val" id="sm-room">—</span></div>
+    <div class="detail-row"><span>Time</span><span class="val" id="sm-time">—</span></div>
+    <div style="margin-top:16px;">
+      <p style="font-size:12px;font-weight:700;color:#15803d;margin:0 0 8px;">Present (<span id="sm-present-count">0</span>)</p>
+      <div id="sm-present-list" style="font-size:13px;margin-bottom:16px;"></div>
+      <p style="font-size:12px;font-weight:700;color:#b91c1c;margin:0 0 8px;">Absent (<span id="sm-absent-count">0</span>)</p>
+      <div id="sm-absent-list" style="font-size:13px;"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initLecturerDashboardPage } from "./shared.js";
+initLecturerDashboardPage();
+</script>
+
+</body>
+</html>

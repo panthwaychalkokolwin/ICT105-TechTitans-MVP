@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AttendQR — Scan to check in</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-scan">
+
+<div class="nav">
+  <div class="brand"><div class="mark">A</div>AttendQR</div>
+  <div class="nav-links">
+    <a href="home.html">
+    <span>Home</span>
+    </a>
+    <span class="active">Check-in</span>
+    <a href="records.html">
+    <span>Records</span>
+    </a>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <a href="#" id="logout-link" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;">Log out</a>
+    <div class="profile-menu-wrap">
+      <div class="avatar" id="nav-avatar" style="cursor:pointer;">JS</div>
+      <div class="profile-dropdown" id="profile-dropdown">
+        <div class="profile-dropdown-header"><img class="profile-avatar-img" id="profile-avatar-img" alt="Profile picture"></div>
+        <div class="profile-field"><span class="profile-label" id="profile-id-label">Student ID</span><span class="profile-value" id="profile-id">—</span></div>
+        <div class="profile-field"><span class="profile-label">Full name</span><span class="profile-value" id="profile-name">—</span></div>
+        <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profile-email">—</span></div>
+        <div class="profile-status" id="profile-status">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="step-track">
+    <div class="step-dot"></div>
+    <div class="step-dot todo"></div>
+    <div class="step-dot todo"></div>
+  </div>
+
+  <p class="title">Scan to check in</p>
+  <p class="sub">Point your camera at the QR code shown by your lecturer.</p>
+
+  <div class="camera">
+    <div class="camera-feed"></div>
+    <div id="qr-reader"></div>
+    <div class="flash-btn">⚡</div>
+    <div class="scan-frame">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      <div class="scan-line"></div>
+    </div>
+    <div class="camera-hint">Align the QR code within the frame</div>
+  </div>
+
+  <div class="session-card">
+    <div class="session-icon">M</div>
+    <div>
+      <div class="session-title" id="session-title">Waiting to scan…</div>
+      <div class="session-sub" id="session-sub">Point your camera at a session QR code, or enter the code manually.</div>
+    </div>
+  </div>
+
+  <div style="text-align:left;margin-bottom:16px;">
+    <label style="display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px;">Checking in as</label>
+    <input type="text" id="student-name" readonly
+      style="width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px;color:var(--ink);background:var(--blue-50);box-sizing:border-box;">
+  </div>
+
+  <button class="manual-btn" id="manual-entry-btn">Enter code manually</button>
+  <div><a href="home.html" class="cancel-link">Cancel and go back</a></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script type="module">
+import { initScanPage } from "./shared.js";
+initScanPage();
+</script>
+
+</body>
+</html>
